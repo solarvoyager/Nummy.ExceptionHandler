@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Title>Application monitoring and logging package for .net Core apps</Title>
+    <AnalysisLevel>none</AnalysisLevel>
+	<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+	 <PackageReadmeFile>README.md</PackageReadmeFile>
+	 <PackageIcon>icon.png</PackageIcon>
+	 <Version>1.0.1-alpha</Version>
+  </PropertyGroup>
+
+	<ItemGroup>
+		<None Include="LICENSE.txt" Pack="true" PackagePath="" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="README.md" Pack="true" PackagePath="" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="icon.png">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
+	</ItemGroup>
+
+</Project>
