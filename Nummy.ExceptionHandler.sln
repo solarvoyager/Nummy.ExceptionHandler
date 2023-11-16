@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34221.43
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nummy.Exception", "Nummy.Exception.csproj", "{1E4D1E43-5A7E-4164-9D6F-5574C7D9C65A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nummy.ExceptionHandler", "Nummy.ExceptionHandler.csproj", "{1E4D1E43-5A7E-4164-9D6F-5574C7D9C65A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

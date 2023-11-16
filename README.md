@@ -1,6 +1,6 @@
 # Nummy Global Exception & Logging Handling, Monitoring package for .NET Core
 
-[![NuGet Version](https://img.shields.io/nuget/v/Nummy.Exception.svg)](https://www.nuget.org/packages/Nummy.Exception/)
+[![NuGet Version](https://img.shields.io/nuget/v/Nummy.ExceptionHandler.svg)](https://www.nuget.org/packages/Nummy.ExceptionHandler/)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 ## Overview
@@ -19,4 +19,4 @@ This is a .NET Core library for global exception handling in your application. I
 Install the package via NuGet Package Manager Console:
 
 ```bash
-Install-Package Nummy.Exception
+Install-Package Nummy.ExceptionHandler
