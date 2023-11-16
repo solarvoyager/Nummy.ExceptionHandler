@@ -10,7 +10,6 @@ This is a .NET Core library for global exception handling in your application. I
 ## Features
 
 - **Global Exception Handling**: Capture unhandled exceptions at the application level.
-- **Logging**: Easily integrate with your logging framework to log exceptions.
 - **Customizable**: Implement custom handlers for specific exception types.
 - **NuGet Package**: Easily install via NuGet.
 
