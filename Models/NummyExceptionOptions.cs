@@ -4,9 +4,9 @@ namespace Nummy.ExceptionHandler.Models
 {
     public class NummyExceptionOptions
     {
-        public bool UseCustomResponse { get; set; }
+        public bool ReturnResponseDuringException { get; set; }
         public object Response { get; set; }
-        public string ResponseContentType { get; set; } = "application/json";
+        public NummyResponseContentType ResponseContentType { get; set; } = NummyResponseContentType.Json;
         public HttpStatusCode ResponseStatusCode { get; set; } = HttpStatusCode.BadRequest;
     }
 }
