@@ -35,8 +35,8 @@ namespace Nummy.ExceptionHandler.Middlewares
 
         private static async Task HandleExceptionAsync(HttpContext context, NummyExceptionOptions options)
         {
-            context.Response.ContentType = options.ResponseContentType == NummyResponseContentType.Json 
-                ? "application/json" 
+            context.Response.ContentType = options.ResponseContentType == NummyResponseContentType.Json
+                ? "application/json"
                 : "application/xml";
 
             context.Response.StatusCode = (int)options.ResponseStatusCode;

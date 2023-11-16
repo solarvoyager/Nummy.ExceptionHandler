@@ -3,7 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Nummy.ExceptionHandler.Middlewares;
 using Nummy.ExceptionHandler.Models;
 
-namespace Nummy.ExceptionHandler.DependencyInjection
+namespace Nummy.ExceptionHandler.Extensions
 {
     public static class NummyExceptionServiceExtension
     {
