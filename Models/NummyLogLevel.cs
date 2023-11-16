@@ -1,6 +1,6 @@
 ﻿namespace Nummy.ExceptionHandler.Models
 {
-    internal enum NummyLogLevel
+    public enum NummyLogLevel
     {
         Fatal,
         Error,

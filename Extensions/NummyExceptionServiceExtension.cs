@@ -9,7 +9,7 @@ namespace Nummy.ExceptionHandler.Extensions
     {
         public static IServiceCollection AddNummyExceptionHandler(this IServiceCollection services, Action<NummyExceptionOptions> options)
         {
-            services.Configure(options);
+            services.Configure<NummyExceptionOptions>(options);
 
             return services;
         }

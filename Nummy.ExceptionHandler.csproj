@@ -10,7 +10,7 @@
 	<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
 	 <PackageReadmeFile>README.md</PackageReadmeFile>
 	 <PackageIcon>icon.png</PackageIcon>
-	 <Version>1.0.7</Version>
+	 <Version>1.0.8</Version>
 	 <Company>Nummy</Company>
 	 <Authors>Nummy</Authors>
 	 <RepositoryUrl>https://github.com/solarvoyager/Nummy.ExceptionHandler</RepositoryUrl>

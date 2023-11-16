@@ -1,20 +1,21 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Options;
 using Nummy.ExceptionHandler.Models;
 using System.Text.Json;
 
 namespace Nummy.ExceptionHandler.Middlewares
 {
-    internal class NummyExceptionMiddleware
+    public class NummyExceptionMiddleware
     {
         //private readonly ILogger _logger;
         private readonly NummyExceptionOptions _options;
         private readonly RequestDelegate _next;
 
-        public NummyExceptionMiddleware(RequestDelegate next, NummyExceptionOptions options)
+        public NummyExceptionMiddleware(RequestDelegate next, IOptions<NummyExceptionOptions> options)
         {
             //_logger = logger;
             _next = next;
-            _options = options;
+            _options = options.Value;
         }
 
         public async Task InvokeAsync(HttpContext httpContext)
