@@ -34,8 +34,11 @@ using Nummy.ExceptionHandler.Extensions;
 
 services.AddNummyExceptionHandler(options =>
 {
-    // Configure Nummy Exception Handler options here, if needed
-    // Example: options.IncludeExceptionDetails = true;
+    // Configure options here
+    // Example: 
+    // options.ReturnResponseDuringException = true;
+    // options.ResponseStatusCode = HttpStatusCode.BadRequest;
+    // options.Response = new YourResultModel("General Error!");
 });
 
 // ... other configurations
@@ -47,6 +50,8 @@ Use Middleware: In the Configure method of your Startup.cs file, add the followi
 using Nummy.ExceptionHandler.Extensions;
 ```
 ```csharp
+var app = builder.Build();
+
 // ... other configurations
 
 app.UseNummyExceptionHandler();
@@ -56,7 +61,7 @@ app.UseNummyExceptionHandler();
 Now, your application is set up to handle unhandled exceptions globally using the Nummy Exception Handler.
 
 ## Customization
-If you want to customize the behavior of the Nummy Exception Handler, you can pass additional options when configuring the services. For example:
+To customize the behavior of the Nummy Exception Handler, you have to pass options when configuring the services. For example:
 
 ```csharp
 builder.Services.AddNummyExceptionHandler(options =>
