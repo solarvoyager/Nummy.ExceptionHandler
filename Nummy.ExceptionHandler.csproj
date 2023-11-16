@@ -11,6 +11,9 @@
 	 <PackageReadmeFile>README.md</PackageReadmeFile>
 	 <PackageIcon>icon.png</PackageIcon>
 	 <Version>1.0.2-alpha</Version>
+	 <Company>Nummy</Company>
+	 <Authors>Nummy</Authors>
+	 <RepositoryUrl>https://github.com/solarvoyager/Nummy.ExceptionHandler</RepositoryUrl>
   </PropertyGroup>
 
 	<ItemGroup>
