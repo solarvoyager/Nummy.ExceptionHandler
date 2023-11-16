@@ -10,10 +10,12 @@
 	<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
 	 <PackageReadmeFile>README.md</PackageReadmeFile>
 	 <PackageIcon>icon.png</PackageIcon>
-	 <Version>1.0.8</Version>
-	 <Company>Nummy</Company>
+	 <Version>1.0.9</Version>
+	 <Company>SolarVoyager</Company>
 	 <Authors>Nummy</Authors>
 	 <RepositoryUrl>https://github.com/solarvoyager/Nummy.ExceptionHandler</RepositoryUrl>
+	 <Description>.NET Core library for global exception handling in your application.</Description>
+	 <Copyright>SolarVoyager 2023</Copyright>
   </PropertyGroup>
 
 	<ItemGroup>
