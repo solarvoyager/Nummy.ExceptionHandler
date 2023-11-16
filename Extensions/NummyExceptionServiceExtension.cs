@@ -7,12 +7,14 @@ namespace Nummy.ExceptionHandler.Extensions
 {
     public static class NummyExceptionServiceExtension
     {
-        public static void AddNummyExceptionHander(this IServiceCollection services, Action<NummyExceptionOptions> options)
+        public static IServiceCollection AddNummyExceptionHandler(this IServiceCollection services, Action<NummyExceptionOptions> options)
         {
             services.Configure(options);
+
+            return services;
         }
 
-        public static void UsNummyExceptionHandler(IApplicationBuilder app)
+        public static void UseNummyExceptionHandler(IApplicationBuilder app)
         {
             app.UseMiddleware<NummyExceptionMiddleware>();
         }
