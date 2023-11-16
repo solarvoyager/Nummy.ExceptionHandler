@@ -14,7 +14,7 @@ namespace Nummy.ExceptionHandler.Extensions
             return services;
         }
 
-        public static void UseNummyExceptionHandler(IApplicationBuilder app)
+        public static void UseNummyExceptionHandler(this IApplicationBuilder app)
         {
             app.UseMiddleware<NummyExceptionMiddleware>();
         }
