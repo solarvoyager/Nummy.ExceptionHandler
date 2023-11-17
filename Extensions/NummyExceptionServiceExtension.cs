@@ -2,6 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Nummy.ExceptionHandler.Middlewares;
 using Nummy.ExceptionHandler.Models;
+using Nummy.ExceptionHandler.Utils;
 
 namespace Nummy.ExceptionHandler.Extensions
 {
@@ -9,6 +10,11 @@ namespace Nummy.ExceptionHandler.Extensions
     {
         public static IServiceCollection AddNummyExceptionHandler(this IServiceCollection services, Action<NummyExceptionOptions> options)
         {
+            var exceptionOptions = new NummyExceptionOptions();
+            options.Invoke(exceptionOptions);
+
+            NummyModelValidator.ValidateNummyExceptionOptions(exceptionOptions);
+
             services.Configure<NummyExceptionOptions>(options);
 
             return services;

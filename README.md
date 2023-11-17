@@ -36,9 +36,10 @@ services.AddNummyExceptionHandler(options =>
 {
     // Configure options here
     // Example: 
-    // options.ReturnResponseDuringException = true;
-    // options.ResponseStatusCode = HttpStatusCode.BadRequest;
-    // options.Response = new { message = "An error occurred" }; // or your custom object
+    options.ReturnResponseDuringException = true;                 // if false, the app throws exceptions as a normal
+    options.ResponseContentType = NummyResponseContentType.Json;
+    options.ResponseStatusCode = HttpStatusCode.BadRequest;
+    options.Response = new { message = "An error occurred" };     // or your custom object
 });
 
 // .. other configurations
@@ -67,6 +68,7 @@ To customize the behavior of the Nummy Exception Handler, you have to pass optio
 builder.Services.AddNummyExceptionHandler(options =>
 {
     options.ReturnResponseDuringException = true;
+    options.ResponseContentType = NummyResponseContentType.Json;
     options.ResponseStatusCode = HttpStatusCode.BadRequest;
     options.Response = new { message = "An error occurred" };
 });
