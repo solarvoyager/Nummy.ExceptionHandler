@@ -1,4 +1,5 @@
 
+
 # Nummy Global Exception & Logging Handling, Monitoring package for .NET Core
 
 [![NuGet Version](https://img.shields.io/nuget/v/Nummy.ExceptionHandler.svg)](https://www.nuget.org/packages/Nummy.ExceptionHandler/)
@@ -6,13 +7,7 @@
 
 ## Overview
 
-This is a .NET Core library for global exception handling in your application. It provides a centralized mechanism to handle unhandled exceptions and log them appropriately.
-
-### Features
-
-- **Global Exception Handling**: Capture unhandled exceptions at the application level.
-- **Customizable**: Implement custom handlers for specific exception types.
-- **NuGet Package**: Easily install via NuGet.
+This is a .NET Core library for global exception handling in your application.
 
 ## Installation
 
@@ -24,7 +19,7 @@ Install-Package Nummy.ExceptionHandler
 ```
 
 ## Getting Started
-In your `Program.cs` file add the following line to register the Nummy Exception Handler:
+In your `Program.cs` file add the following line:
 
 ```csharp
 using Nummy.ExceptionHandler.Extensions;
@@ -45,7 +40,7 @@ services.AddNummyExceptionHandler(options =>
 // .. other configurations
 var app = builder.Build();
 ```
-Use Middleware: In the Configure method of your Startup.cs file, add the following line to use the Nummy Exception Handler middleware:
+Use Middleware: In the Configure method of your `Startup.cs` file, add the following line:
 
 ```csharp
 using Nummy.ExceptionHandler.Extensions;
