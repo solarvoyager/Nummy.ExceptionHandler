@@ -5,12 +5,12 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Title>Application monitoring and logging package for .net Core apps</Title>
+    <Title>.Net Core Global Exception Handling package</Title>
     <AnalysisLevel>none</AnalysisLevel>
 	<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
 	 <PackageReadmeFile>README.md</PackageReadmeFile>
 	 <PackageIcon>icon.png</PackageIcon>
-	 <Version>1.1.0</Version>
+	 <Version>1.1.1</Version>
 	 <Company>SolarVoyager</Company>
 	 <Authors>Nummy</Authors>
 	 <RepositoryUrl>https://github.com/solarvoyager/Nummy.ExceptionHandler</RepositoryUrl>

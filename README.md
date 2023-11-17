@@ -61,19 +61,5 @@ app.UseNummyExceptionHandler();
 ```
 Now, your application is set up to handle unhandled exceptions globally using the Nummy Exception Handler.
 
-## Customization
-To customize the behavior of the Nummy Exception Handler, you have to pass options when configuring the services. For example:
-
-```csharp
-builder.Services.AddNummyExceptionHandler(options =>
-{
-    options.ReturnResponseDuringException = true;
-    options.ResponseContentType = NummyResponseContentType.Json;
-    options.ResponseStatusCode = HttpStatusCode.BadRequest;
-    options.Response = new { message = "An error occurred" };
-});
-```
-This allows you to tailor the exception handling to fit the specific needs of your application.
-
 ## License
 This library is licensed under the MIT License.
