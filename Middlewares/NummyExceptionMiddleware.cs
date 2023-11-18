@@ -1,48 +1,48 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using System.Text.Json;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
 using Nummy.ExceptionHandler.Models;
-using System.Text.Json;
 
-namespace Nummy.ExceptionHandler.Middlewares
+namespace Nummy.ExceptionHandler.Middlewares;
+
+public class NummyExceptionMiddleware
 {
-    public class NummyExceptionMiddleware
+    private readonly RequestDelegate _next;
+
+    //private readonly ILogger _logger;
+    private readonly NummyExceptionOptions _options;
+
+    public NummyExceptionMiddleware(RequestDelegate next, IOptions<NummyExceptionOptions> options)
     {
-        //private readonly ILogger _logger;
-        private readonly NummyExceptionOptions _options;
-        private readonly RequestDelegate _next;
+        //_logger = logger;
+        _next = next;
+        _options = options.Value;
+    }
 
-        public NummyExceptionMiddleware(RequestDelegate next, IOptions<NummyExceptionOptions> options)
+    public async Task InvokeAsync(HttpContext httpContext)
+    {
+        try
         {
-            //_logger = logger;
-            _next = next;
-            _options = options.Value;
+            await _next(httpContext);
         }
-
-        public async Task InvokeAsync(HttpContext httpContext)
+        catch (Exception ex)
         {
-            try
-            {
-                await _next(httpContext);
-            }
-            catch (Exception ex)
-            {
-                //_logger.LogError(exception: ex);
+            //_logger.LogError(exception: ex);
 
-                if (_options.ReturnResponseDuringException)
-                    await HandleExceptionAsync(httpContext, _options);
-                else throw ex;
-            }
+            if (_options.ReturnResponseDuringException)
+                await HandleExceptionAsync(httpContext, _options);
+            else throw ex;
         }
+    }
 
-        private static async Task HandleExceptionAsync(HttpContext context, NummyExceptionOptions options)
-        {
-            context.Response.ContentType = options.ResponseContentType == NummyResponseContentType.Json
-                ? "application/json"
-                : "application/xml";
+    private static async Task HandleExceptionAsync(HttpContext context, NummyExceptionOptions options)
+    {
+        context.Response.ContentType = options.ResponseContentType == NummyResponseContentType.Json
+            ? "application/json"
+            : "application/xml";
 
-            context.Response.StatusCode = (int)options.ResponseStatusCode;
+        context.Response.StatusCode = (int)options.ResponseStatusCode;
 
-            await context.Response.WriteAsync(JsonSerializer.Serialize(options.Response));
-        }
+        await context.Response.WriteAsync(JsonSerializer.Serialize(options.Response));
     }
 }

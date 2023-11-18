@@ -4,26 +4,25 @@ using Nummy.ExceptionHandler.Middlewares;
 using Nummy.ExceptionHandler.Models;
 using Nummy.ExceptionHandler.Utils;
 
-namespace Nummy.ExceptionHandler.Extensions
+namespace Nummy.ExceptionHandler.Extensions;
+
+public static class NummyExceptionServiceExtension
 {
-    public static class NummyExceptionServiceExtension
+    public static IServiceCollection AddNummyExceptionHandler(this IServiceCollection services,
+        Action<NummyExceptionOptions> options)
     {
-        public static IServiceCollection AddNummyExceptionHandler(this IServiceCollection services, Action<NummyExceptionOptions> options)
-        {
-            var exceptionOptions = new NummyExceptionOptions();
-            options.Invoke(exceptionOptions);
+        var exceptionOptions = new NummyExceptionOptions();
+        options.Invoke(exceptionOptions);
 
-            NummyModelValidator.ValidateNummyExceptionOptions(exceptionOptions);
+        NummyModelValidator.ValidateNummyExceptionOptions(exceptionOptions);
 
-            services.Configure<NummyExceptionOptions>(options);
+        services.Configure(options);
 
-            return services;
-        }
+        return services;
+    }
 
-        public static void UseNummyExceptionHandler(this IApplicationBuilder app)
-        {
-            app.UseMiddleware<NummyExceptionMiddleware>();
-        }
-
+    public static void UseNummyExceptionHandler(this IApplicationBuilder app)
+    {
+        app.UseMiddleware<NummyExceptionMiddleware>();
     }
 }

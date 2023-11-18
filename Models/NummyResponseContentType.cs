@@ -1,8 +1,7 @@
-﻿namespace Nummy.ExceptionHandler.Models
+﻿namespace Nummy.ExceptionHandler.Models;
+
+public enum NummyResponseContentType
 {
-    public enum NummyResponseContentType
-    {
-        Xml,
-        Json
-    }
+    Xml,
+    Json
 }
