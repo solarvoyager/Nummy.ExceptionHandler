@@ -2,7 +2,7 @@
 
 namespace Nummy.ExceptionHandler.Utils;
 
-public class NummyOptionsValidationException : Exception
+internal class NummyOptionsValidationException : Exception
 {
     public NummyOptionsValidationException()
         : base(

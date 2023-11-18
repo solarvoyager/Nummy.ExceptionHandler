@@ -27,7 +27,7 @@ using Nummy.ExceptionHandler.Extensions;
 ```csharp
 // .. other configurations
 
-services.AddNummyExceptionHandler(options =>
+builder.Services.AddNummyExceptionHandler(options =>
 {
     // Configure options here
     // Example: 

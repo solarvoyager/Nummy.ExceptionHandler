@@ -2,7 +2,7 @@
 
 namespace Nummy.ExceptionHandler.Utils;
 
-public static class NummyModelValidator
+internal static class NummyModelValidator
 {
     public static void ValidateNummyExceptionOptions(NummyExceptionOptions options)
     {

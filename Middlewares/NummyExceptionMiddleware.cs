@@ -5,7 +5,7 @@ using Nummy.ExceptionHandler.Models;
 
 namespace Nummy.ExceptionHandler.Middlewares;
 
-public class NummyExceptionMiddleware
+internal class NummyExceptionMiddleware
 {
     private readonly RequestDelegate _next;
 
