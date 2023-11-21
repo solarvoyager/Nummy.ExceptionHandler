@@ -22,6 +22,7 @@ In your `Program.cs` file add the following line:
 
 ```csharp
 using Nummy.ExceptionHandler.Extensions;
+using Nummy.ExceptionHandler.Models;
 ```
 
 ```csharp
@@ -39,12 +40,6 @@ builder.Services.AddNummyExceptionHandler(options =>
 
 // .. other configurations
 var app = builder.Build();
-```
-
-Use Middleware: In the Configure method of your `Startup.cs` file, add the following line:
-
-```csharp
-using Nummy.ExceptionHandler.Extensions;
 ```
 
 ```csharp
