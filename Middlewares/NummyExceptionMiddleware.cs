@@ -1,7 +1,7 @@
-﻿using System.Text.Json;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
 using Nummy.ExceptionHandler.Models;
+using System.Text.Json;
 
 namespace Nummy.ExceptionHandler.Middlewares;
 
