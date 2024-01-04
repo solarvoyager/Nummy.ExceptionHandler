@@ -1,6 +1,7 @@
 # Nummy Global Exception & Logging Handling, Monitoring package for .NET Core
 
 [![NuGet Version](https://img.shields.io/nuget/v/Nummy.ExceptionHandler.svg)](https://www.nuget.org/packages/Nummy.ExceptionHandler/)
+[![NuGet Downloads](https://img.shields.io/nuget/dt/Nummy.ExceptionHandler.svg)](https://www.nuget.org/packages/Nummy.ExceptionHandler/)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 ## Overview
@@ -9,14 +10,25 @@ This is a .NET Core library for global exception handling in your application.
 
 ## Installation
 
-https://www.nuget.org/packages/Nummy.ExceptionHandler
-Or install the package via NuGet Package Manager Console:
+[Nuget - Nummy.ExceptionHandler](https://www.nuget.org/packages/Nummy.ExceptionHandler)
+
+or install the package via NuGet Package Manager Console:
 
 ```bash
 Install-Package Nummy.ExceptionHandler
 ```
 
 ## Getting Started
+
+#### 1. Run Nummy on your Docker
+
+// under construction
+
+#### 2. Get DSN url from your Docker Nummy instance
+
+// under construction
+
+#### 3. Configure your application
 
 In your `Program.cs` file add the following line:
 
@@ -30,12 +42,12 @@ using Nummy.ExceptionHandler.Models;
 
 builder.Services.AddNummyExceptionHandler(options =>
 {
-    // Configure options here
-    // Example: 
-    options.ReturnResponseDuringException = true;                 // if false, the app throws exceptions as a normal
-    options.ResponseContentType = NummyResponseContentType.Json;
+    // if false, the app throws exceptions as a normal
+    options.HandleException = true;  
+    // set your response object and status code
+    options.Response = new { message = "An error occurred" };
     options.ResponseStatusCode = HttpStatusCode.BadRequest;
-    options.Response = new { message = "An error occurred" };     // or your custom object
+    options.DsnUrl = "your-nummy-dsn-url"
 });
 
 // .. other configurations
@@ -52,7 +64,7 @@ app.UseNummyExceptionHandler();
 // .. other middleware
 ```
 
-Now, your application is set up to handle unhandled exceptions globally using the Nummy Exception Handler.
+#### 4. Now, your application is set up to handle unhandled exceptions globally using the Nummy Exception Handler.
 
 ## License
 
