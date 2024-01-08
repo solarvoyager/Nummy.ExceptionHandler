@@ -9,7 +9,4 @@ internal class NummyCodeLog
     public string? StackTrace { get; set; }
     public string? InnerException { get; set; }
     public string? ExceptionType { get; set; }
-    public required DateTimeOffset CreatedAt { get; set; }
-    public DateTimeOffset? DeletedAt { get; set; }
-    public required bool IsDeleted { get; set; }
 }
