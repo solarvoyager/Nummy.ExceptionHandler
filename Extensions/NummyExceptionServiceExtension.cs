@@ -16,7 +16,7 @@ public static class NummyExceptionServiceExtension
 
         services.Configure(options);
 
-        services.AddExceptionHandler<NummyExceptionHandler>();
+        //services.AddExceptionHandler<NummyExceptionHandler>();
         services.AddProblemDetails();
 
         services.AddSingleton<INummyCodeLoggerService, NummyCodeLoggerService>();
@@ -33,6 +33,6 @@ public static class NummyExceptionServiceExtension
 
     public static void UseNummyExceptionHandler(this IApplicationBuilder app)
     {
-        app.UseExceptionHandler();
+        app.UseMiddleware<NummyExceptionMiddleware>();
     }
 }

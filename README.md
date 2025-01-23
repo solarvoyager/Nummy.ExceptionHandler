@@ -60,6 +60,9 @@ app.UseNummyExceptionHandler();
 // .. other middleware
 ```
 
+> **Attetion:** if you are using [Nummy.HttpLogger](https://www.nuget.org/packages/Nummy.HttpLogger),
+> make sure to first register NummyHttpLogger and then NummyExceptionHandler.
+
 #### 3. Now, your application is set up to handle unhandled exceptions globally using the Nummy Exception Handler.
 
 ## License
