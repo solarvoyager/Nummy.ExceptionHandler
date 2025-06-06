@@ -23,7 +23,7 @@ public static class NummyExceptionServiceExtension
 
         services.AddHttpClient(NummyConstants.ClientName, config =>
         {
-            config.BaseAddress = new Uri(exceptionHandlerOptions.DsnUrl!);
+            config.BaseAddress = new Uri(exceptionHandlerOptions.NummyServiceUrl);
             config.Timeout = new TimeSpan(0, 0, 30);
             config.DefaultRequestHeaders.Clear();
         });

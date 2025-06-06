@@ -8,6 +8,8 @@
 
 This is a .NET Core library for global exception handling in your application.
 
+---
+
 ## Installation
 
 [Nuget - Nummy.ExceptionHandler](https://www.nuget.org/packages/Nummy.ExceptionHandler)
@@ -20,11 +22,13 @@ Install-Package Nummy.ExceptionHandler
 
 ## Getting Started
 
-#### 1. Run Nummy on your Docker and get DSN url of your local instance
+#### 1. Run Nummy on your Docker
 
 [Here is tutorial](https://github.com/solarvoyager/Nummy/blob/master/README.md)
 
-#### 2. Configure your application
+#### 2. Add your application in Nummy
+
+#### 3. Configure in your project
 
 In your `Program.cs` file add the following line:
 
@@ -43,7 +47,9 @@ builder.Services.AddNummyExceptionHandler(options =>
     // set your response object and status code
     options.Response = new { message = "An error occurred" };
     options.ResponseStatusCode = HttpStatusCode.BadRequest;
-    options.DsnUrl = "your-nummy-dsn-url"
+    // from your application's configuration section in Nummy
+    options.NummyServiceUrl = "your-nummy-service-url";
+    options.ApplicationId = "your-nummy-application-id";
 });
 
 // .. other configurations
@@ -60,10 +66,10 @@ app.UseNummyExceptionHandler();
 // .. other middleware
 ```
 
-> **Attetion:** if you are using [Nummy.HttpLogger](https://www.nuget.org/packages/Nummy.HttpLogger),
+> **Attention:** if you are using [Nummy.HttpLogger](https://www.nuget.org/packages/Nummy.HttpLogger),
 > make sure to first register NummyHttpLogger and then NummyExceptionHandler.
 
-#### 3. Now, your application is set up to handle unhandled exceptions globally using the Nummy Exception Handler.
+#### 4. Now, your application is set up to handle unhandled exceptions globally using the Nummy Exception Handler.
 
 ## License
 

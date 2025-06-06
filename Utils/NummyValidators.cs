@@ -4,12 +4,22 @@ namespace Nummy.ExceptionHandler.Utils;
 
 internal static class NummyValidators
 {
-    public static void ValidateNummyExceptionOptions(NummyExceptionHandlerOptions handlerOptions)
+    public static void ValidateNummyExceptionOptions(NummyExceptionHandlerOptions options)
     {
-        if (handlerOptions is { HandleException: true, Response: null })
-            throw new NummyExceptionHandlerResponseValidationException();
-
-        if (string.IsNullOrWhiteSpace(handlerOptions.DsnUrl))
-            throw new NummyExceptionHandlerDsnValidationException();
+        if (options is { HandleException: true, Response: null })
+            throw new HandleExceptionValidationException();
+        
+        var isValidApplicationId = string.IsNullOrWhiteSpace(options.ApplicationId) ||
+                                   Guid.TryParse(options.ApplicationId, out var guid) == false ||
+                                   guid == Guid.Empty;
+        
+        var isValidNummyServiceUrl = string.IsNullOrWhiteSpace(options.NummyServiceUrl) ||
+                              Uri.TryCreate(options.NummyServiceUrl, UriKind.Absolute, out var uri) == false;
+        
+        if (!isValidApplicationId)
+            throw new ApplicationIdValidationException();
+        
+        if(!isValidNummyServiceUrl)
+            throw new NummyServiceUrlValidationException();
     }
 }
