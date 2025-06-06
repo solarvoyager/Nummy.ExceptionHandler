@@ -9,12 +9,13 @@ internal static class NummyValidators
         if (options is { HandleException: true, Response: null })
             throw new HandleExceptionValidationException();
         
-        var isValidApplicationId = string.IsNullOrWhiteSpace(options.ApplicationId) ||
-                                   Guid.TryParse(options.ApplicationId, out var guid) == false ||
-                                   guid == Guid.Empty;
+        var isValidApplicationId = !string.IsNullOrWhiteSpace(options.ApplicationId) &&
+                                   Guid.TryParse(options.ApplicationId, out var guid) &&
+                                   guid != Guid.Empty;
         
-        var isValidNummyServiceUrl = string.IsNullOrWhiteSpace(options.NummyServiceUrl) ||
-                              Uri.TryCreate(options.NummyServiceUrl, UriKind.Absolute, out var uri) == false;
+        var isValidNummyServiceUrl = !string.IsNullOrWhiteSpace(options.NummyServiceUrl) &&
+                                     Uri.TryCreate(options.NummyServiceUrl, UriKind.Absolute, out var uri);
+
         
         if (!isValidApplicationId)
             throw new ApplicationIdValidationException();
