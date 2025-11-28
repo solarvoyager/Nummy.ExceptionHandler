@@ -1,19 +1,23 @@
-﻿using Nummy.ExceptionHandler.Data.Entitites;
+﻿using Microsoft.Extensions.Options;
+using Nummy.ExceptionHandler.Data.Entitites;
 using Nummy.ExceptionHandler.Utils;
 
 namespace Nummy.ExceptionHandler.Data.Services;
 
-internal class NummyCodeLoggerService(IHttpClientFactory clientFactory, IHttpContextAccessor contextAccessor)
+internal class NummyCodeLoggerService(
+    IHttpClientFactory clientFactory,
+    IHttpContextAccessor contextAccessor,
+    IOptions<NummyExceptionHandlerOptions> options)
     : INummyCodeLoggerService
 {
     private readonly HttpClient _client = clientFactory.CreateClient(NummyConstants.ClientName);
 
-    public async Task LogAsync(NummyCodeLogLevel logLevel, string applicationId, Exception ex)
+    public async Task LogAsync(NummyCodeLogLevel logLevel, Exception ex)
     {
         var data = new NummyCodeLog
         {
             TraceIdentifier = contextAccessor.HttpContext?.TraceIdentifier,
-            ApplicationId = applicationId,
+            ApplicationId = options.Value.ApplicationId,
             LogLevel = logLevel,
             Title = ex.Message,
             StackTrace = ex.StackTrace,

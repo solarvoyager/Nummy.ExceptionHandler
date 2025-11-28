@@ -21,7 +21,7 @@ internal sealed class NummyExceptionMiddleware(
         {
             if (!options.Value.HandleException) throw;
 
-            await loggerService.LogAsync(NummyCodeLogLevel.Error, options.Value.ApplicationId, exception);
+            await loggerService.LogAsync(NummyCodeLogLevel.Error, exception);
             await HandleExceptionAsync(context);
         }
     }
