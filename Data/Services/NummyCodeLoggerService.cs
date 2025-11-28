@@ -8,11 +8,12 @@ internal class NummyCodeLoggerService(IHttpClientFactory clientFactory, IHttpCon
 {
     private readonly HttpClient _client = clientFactory.CreateClient(NummyConstants.ClientName);
 
-    public async Task LogAsync(NummyCodeLogLevel logLevel, Exception ex)
+    public async Task LogAsync(NummyCodeLogLevel logLevel, string applicationId, Exception ex)
     {
         var data = new NummyCodeLog
         {
             TraceIdentifier = contextAccessor.HttpContext?.TraceIdentifier,
+            ApplicationId = applicationId,
             LogLevel = logLevel,
             Title = ex.Message,
             StackTrace = ex.StackTrace,

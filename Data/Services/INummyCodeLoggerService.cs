@@ -4,5 +4,5 @@ namespace Nummy.ExceptionHandler.Data.Services;
 
 public interface INummyCodeLoggerService
 {
-    Task LogAsync(NummyCodeLogLevel logLevel, Exception ex);
+    Task LogAsync(NummyCodeLogLevel logLevel, string applicationId, Exception ex);
 }

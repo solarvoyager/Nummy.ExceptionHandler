@@ -3,6 +3,7 @@
 internal class NummyCodeLog
 {
     public string? TraceIdentifier { get; set; }
+    public required string ApplicationId { get; set; }
     public required NummyCodeLogLevel LogLevel { get; set; }
     public required string Title { get; set; }
     public string? Description { get; set; }
