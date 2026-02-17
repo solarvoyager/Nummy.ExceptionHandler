@@ -1,4 +1,6 @@
-﻿using Nummy.ExceptionHandler.Data.Services;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
+using Nummy.ExceptionHandler.Data.Services;
 using Nummy.ExceptionHandler.Middlewares;
 using Nummy.ExceptionHandler.Utils;
 
@@ -16,15 +18,14 @@ public static class NummyExceptionServiceExtension
 
         services.Configure(options);
 
-        //services.AddExceptionHandler<NummyExceptionHandler>();
-        services.AddProblemDetails();
+        services.AddHttpContextAccessor();
 
         services.AddSingleton<INummyCodeLoggerService, NummyCodeLoggerService>();
 
         services.AddHttpClient(NummyConstants.ClientName, config =>
         {
             config.BaseAddress = new Uri(exceptionHandlerOptions.NummyServiceUrl);
-            config.Timeout = new TimeSpan(0, 0, 30);
+            config.Timeout = TimeSpan.FromSeconds(5);
             config.DefaultRequestHeaders.Clear();
         });
 

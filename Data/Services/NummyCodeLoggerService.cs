@@ -1,4 +1,7 @@
-﻿using Microsoft.Extensions.Options;
+using System.Net.Http.Json;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using Nummy.ExceptionHandler.Data.Entitites;
 using Nummy.ExceptionHandler.Utils;
 
@@ -7,11 +10,10 @@ namespace Nummy.ExceptionHandler.Data.Services;
 internal class NummyCodeLoggerService(
     IHttpClientFactory clientFactory,
     IHttpContextAccessor contextAccessor,
-    IOptions<NummyExceptionHandlerOptions> options)
+    IOptions<NummyExceptionHandlerOptions> options,
+    ILogger<NummyCodeLoggerService> logger)
     : INummyCodeLoggerService
 {
-    private readonly HttpClient _client = clientFactory.CreateClient(NummyConstants.ClientName);
-
     public async Task LogAsync(NummyCodeLogLevel logLevel, Exception ex)
     {
         var data = new NummyCodeLog
@@ -31,6 +33,14 @@ internal class NummyCodeLoggerService(
 
     private async Task InsertLogAsync(NummyCodeLog data)
     {
-        await _client.PostAsJsonAsync(NummyConstants.CodeLogAddUrl, data);
+        try
+        {
+            using var client = clientFactory.CreateClient(NummyConstants.ClientName);
+            await client.PostAsJsonAsync(NummyConstants.CodeLogAddUrl, data);
+        }
+        catch (Exception ex)
+        {
+            logger.LogDebug(ex, "Failed to send exception log to Nummy service");
+        }
     }
 }
