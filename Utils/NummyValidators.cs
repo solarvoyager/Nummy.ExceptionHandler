@@ -19,8 +19,12 @@ internal static class NummyValidators
         
         if (!isValidApplicationId)
             throw new ApplicationIdValidationException();
-        
+
         if(!isValidNummyServiceUrl)
             throw new NummyServiceUrlValidationException();
+
+        if (options.HttpClientTimeout <= TimeSpan.Zero)
+            throw new ArgumentOutOfRangeException(nameof(options.HttpClientTimeout),
+                "HttpClientTimeout must be greater than zero.");
     }
 }

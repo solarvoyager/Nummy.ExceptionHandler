@@ -11,6 +11,9 @@ public static class NummyExceptionServiceExtension
     public static IServiceCollection AddNummyExceptionHandler(this IServiceCollection services,
         Action<NummyExceptionHandlerOptions> options)
     {
+        ArgumentNullException.ThrowIfNull(services);
+        ArgumentNullException.ThrowIfNull(options);
+
         var exceptionHandlerOptions = new NummyExceptionHandlerOptions();
         options.Invoke(exceptionHandlerOptions);
 
@@ -20,12 +23,14 @@ public static class NummyExceptionServiceExtension
 
         services.AddHttpContextAccessor();
 
+        // Singleton is safe: IHttpContextAccessor resolves HttpContext via AsyncLocal<T>.
+        // The context is read at call time inside LogAsync, not stored on this instance.
         services.AddSingleton<INummyCodeLoggerService, NummyCodeLoggerService>();
 
         services.AddHttpClient(NummyConstants.ClientName, config =>
         {
             config.BaseAddress = new Uri(exceptionHandlerOptions.NummyServiceUrl);
-            config.Timeout = TimeSpan.FromSeconds(5);
+            config.Timeout = exceptionHandlerOptions.HttpClientTimeout;
             config.DefaultRequestHeaders.Clear();
         });
 
@@ -34,6 +39,7 @@ public static class NummyExceptionServiceExtension
 
     public static void UseNummyExceptionHandler(this IApplicationBuilder app)
     {
+        ArgumentNullException.ThrowIfNull(app);
         app.UseMiddleware<NummyExceptionMiddleware>();
     }
 }

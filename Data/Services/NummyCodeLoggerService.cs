@@ -28,15 +28,15 @@ internal class NummyCodeLoggerService(
             Description = ex.ToString(),
         };
 
-        await InsertLogAsync(data);
+        await InsertLogAsync(data).ConfigureAwait(false);
     }
 
     private async Task InsertLogAsync(NummyCodeLog data)
     {
         try
         {
-            using var client = clientFactory.CreateClient(NummyConstants.ClientName);
-            await client.PostAsJsonAsync(NummyConstants.CodeLogAddUrl, data);
+            var client = clientFactory.CreateClient(NummyConstants.ClientName);
+            await client.PostAsJsonAsync(NummyConstants.CodeLogAddUrl, data).ConfigureAwait(false);
         }
         catch (Exception ex)
         {
